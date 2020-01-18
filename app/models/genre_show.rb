@@ -1,0 +1,2 @@
+class GenreShow < ApplicationRecord
+end

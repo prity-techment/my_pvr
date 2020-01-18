@@ -1,0 +1,39 @@
+<h2>Favorites</h2>
+<table class='table'>
+	<thead>
+		<th>
+			Title
+		</th>
+		<th>
+			Description
+		</th>
+		<th>
+			Channel(s)
+		</th>
+		<th>Actions</th>
+	</thead>
+	<tbody>
+		<% if @shows.present? %>
+			<% @shows.each do |show| %>
+			  <tr>
+			  	<td><%= show.title %></td>
+			  	<td><%= show.description %></td>
+			  	<td><% show.channels.each do |channel| %>
+			  		<span><%= channel.name %></span>
+			  		<% end %>
+			  	</td>
+			  	<td><%= link_to favorites_path(user_id: current_user.id, show_id: show.id, channel_id: show.channels.first.id), method: :post do %>
+			  		Add to favorites
+			  		<% end %>
+			  	</td>
+			  </tr>
+			<% end %>
+		<% else %>
+		  <tr>
+		  	<td colspan="3">
+		  		No records found
+		  	</td>
+		  </tr>
+		<% end %>
+	</tbody>
+</table>

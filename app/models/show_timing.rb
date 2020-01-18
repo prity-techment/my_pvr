@@ -1,0 +1,2 @@
+class ShowTiming < ApplicationRecord
+end
